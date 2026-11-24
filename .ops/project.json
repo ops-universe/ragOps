@@ -1,0 +1,7 @@
+{
+  "name": "ragOps",
+  "ecosystem": "ops-universe",
+  "maturity": "developer-preview",
+  "schemaVersion": 1,
+  "palette": "ragops"
+}
