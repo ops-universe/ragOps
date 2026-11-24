@@ -1,5 +1,7 @@
 # Resume
 
-Last verified main: 4f76c556acaa295a08fd2f7a191f39b37cc90ca2
+Last verified main: c0e8f8f54924a900e9ae3d8158c0578ed925fe02
+CI: https://github.com/ops-universe/ragOps/actions/runs/45461258768
 
-Next: complete approved scaffold and genuine lockfiles, safe local file ingestion, CI, then PR. Verify with npm ci && npm test && npm run demo. No verified test results yet.
+Current phase 2: verify local ingestion PR; then harden retrieval contracts and implement semantic/hybrid. Reproduce: npm ci && npm test && npm run demo; node src/cli.mjs fixtures/knowledge vacation hr.md catalog.txt; cd website-react && npm ci && npm run build.
+Known limitation: ingestion root must be trusted, not concurrently writable by an adversary; no persisted index or external provider.
