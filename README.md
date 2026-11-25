@@ -2,10 +2,10 @@
 
 Retrieve better. Ground every answer.
 
-Offline retrieval engineering toolkit. Run `npm ci`, `npm test`, `npm run demo`.
+Offline RAG engineering toolkit. Run `npm ci`, `npm test`, `npm run demo`.
 
-Local CLI: `node src/cli.mjs fixtures/knowledge vacation hr.md catalog.txt`.
+Local retrieval: `node src/cli.mjs fixtures/knowledge vacation hr.md catalog.txt`.
 
-Synthetic experiment comparison: `node src/benchmark.mjs`.
+Experiments: `node src/benchmark.mjs`.
 
-Use `verifiedContext(corpus,results)` for corpus-backed citations; the original `assembleContext` only checks structure. Caller must supply an authorized corpus. External adapters are opt-in and cancellation is cooperative. No live provider compatibility or factual grounding guarantee. Public release deferred.
+Local synthetic dashboard: `node src/serve-dashboard.mjs`, then open http://127.0.0.1:4178. Explore documents, chunks, rankings, verified context and synthetic benchmarks. Role switching demonstrates filtering, not authentication. No external provider calls by default. No factual grounding guarantee or verified live provider compatibility. Public release deferred.
