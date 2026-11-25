@@ -38,3 +38,20 @@ jobs:
           test -f dist/index.html
           VITE_BASE_PATH=/ragOps/ npm run build
           grep -q '/ragOps/assets/' dist/index.html
+  browser-acceptance:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+        working-directory: browser-runner
+      - run: npm audit --audit-level=high
+        working-directory: browser-runner
+      - run: npx --no-install playwright install --with-deps chromium
+        working-directory: browser-runner
+      - run: npx --no-install playwright test
+        working-directory: browser-runner
