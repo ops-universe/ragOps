@@ -1,0 +1,11 @@
+import {ingest,retrieve} from './core.mjs';import {semanticRetrieve,hybridRetrieve} from './semantic.mjs';import {createHash} from 'node:crypto';
+export const syntheticCorpus=Object.freeze([{source:'hr',text:'Vacation requests go through the employee portal. Managers approve annual leave. Benefits enrollment occurs in October.'},{source:'catalog',text:'Emerald notebooks have SKU N100. Blue folders have SKU F200. Stock availability is updated daily.'},{source:'technical',text:'To rotate credentials, revoke the old token and issue a new token. Authentication requires a valid API token.'}].map(Object.freeze));
+export const syntheticQueries=Object.freeze([{query:'vacation annual leave',relevant:['hr']},{query:'notebooks SKU',relevant:['catalog']},{query:'rotate credentials token',relevant:['technical']}].map(x=>Object.freeze({...x,relevant:Object.freeze(x.relevant)})));
+export async function experiment({size=64,overlap=16,k=3,strategy='lexical'}={}){
+ if(!['lexical','offline','hybrid'].includes(strategy)||!Number.isSafeInteger(k)||k<1||k>100)throw Error('Invalid experiment');
+ const docs=syntheticCorpus.map(d=>ingest(d.text,{source:d.source,size,overlap})),search={lexical:retrieve,offline:semanticRetrieve,hybrid:hybridRetrieve}[strategy],rows=[];
+ for(const q of syntheticQueries){const results=await search(docs,q.query,{k});const sources=[...new Set(results.map(x=>x.chunk.source))],hits=sources.filter(x=>q.relevant.includes(x)).length;rows.push({query:q.query,relevant:q.relevant,retrieved:sources,precisionAtK:hits/k,recallAtK:hits/q.relevant.length,chunkIds:results.map(x=>x.chunk.id)});}
+ const average=key=>rows.reduce((sum,r)=>sum+r[key],0)/rows.length;
+ return {schemaVersion:1,dataset:'synthetic-v1',datasetHash:createHash('sha256').update(JSON.stringify([syntheticCorpus,syntheticQueries])).digest('hex'),config:{size,overlap,k,strategy},metricDefinition:'Unique relevant source hits divided by requested K; recall divided by relevant source count. Duplicate chunks cannot inflate hits.',chunkCount:docs.reduce((n,d)=>n+d.chunks.length,0),precisionAtK:average('precisionAtK'),recallAtK:average('recallAtK'),rows};
+}
+export async function compareExperiments(){const reports=[];for(const size of [64,128])for(const strategy of ['lexical','offline','hybrid'])reports.push(await experiment({size,overlap:16,k:3,strategy}));return reports;}
