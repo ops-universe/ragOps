@@ -1,0 +1,2 @@
+import {ingestFile} from './local.mjs';import {retrieve} from './core.mjs';
+try{const [root,query,...paths]=process.argv.slice(2);if(!root||!query||!paths.length||paths.length>100)throw Error('Usage: node src/cli.mjs ROOT QUERY FILE [FILE...]');const docs=[];let total=0;for(const p of paths){const d=await ingestFile(root,p);total+=d.chunks.length;if(total>10000)throw Error('Corpus chunk limit');docs.push(d);}console.log(JSON.stringify(retrieve(docs,query),null,2));}catch(e){console.error(e.message);process.exitCode=1;}
