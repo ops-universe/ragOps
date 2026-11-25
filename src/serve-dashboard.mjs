@@ -1,0 +1,1 @@
+import {createDashboard} from './dashboard.mjs';const app=createDashboard({port:Number(process.env.PORT||4178)});const address=await app.start();console.log('Local synthetic dashboard: http://127.0.0.1:'+address.port);
