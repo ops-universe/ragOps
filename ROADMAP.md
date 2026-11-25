@@ -1,10 +1,10 @@
 # Roadmap
 
-- [x] 1 Foundation — PR #1 merged
-- [x] 2 Document ingestion — PR #2 merged, exact-head CI passed
-- [ ] 3 Retrieval — BM25 merged; index persistence and contract validation candidate
-- [ ] 4 Semantic/hybrid
-- [ ] 5 Context and citations
+- [x] 1 Foundation
+- [x] 2 Document ingestion
+- [x] 3 Retrieval — PR #3 merged; BM25, filters, validation, persistence
+- [ ] 4 Semantic/hybrid — candidate implementation
+- [ ] 5 Context and citations — candidate implementation
 - [ ] 6 Experiments
 - [ ] 7 Dashboard
 - [ ] 8 Enterprise scenarios
