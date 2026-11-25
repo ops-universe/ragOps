@@ -1,5 +1,6 @@
 # Changelog
 
 ## Unreleased
-- Merged foundation and in-memory BM25 retrieval (PR #1, c0e8f8f; main CI successful).
-- Candidate: bounded local Markdown/text ingestion and CLI with negative tests; pending verification.
+- PR #1: merged foundation and deterministic BM25 retrieval.
+- PR #2: merged local bounded Markdown/text ingestion and retrieval CLI; exact-head CI passed.
+- Candidate: document integrity validation, corpus limits and versioned local index persistence.

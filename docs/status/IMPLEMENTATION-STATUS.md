@@ -1,3 +1,3 @@
 # Implementation status
 
-PR #1 merged at c0e8f8f54924a900e9ae3d8158c0578ed925fe02. Main CI run 45461258768 passed core and website checks. Local file ingestion and CLI implemented on feature branch, verification pending. No release claim.
+PR #2 merged at 5bbc7b234cd90e0a4a3bb565ba147cd17c4e4630. Exact-head CI run 45494290266 passed. Post-merge CI initially queued. Phase 3 candidate adds document integrity validation and local index persistence; CI pending. No release claim.
