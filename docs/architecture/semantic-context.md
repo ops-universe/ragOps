@@ -1,0 +1,3 @@
+# Semantic and context contracts
+
+Built-in hash-v1 is an offline deterministic token hashing baseline, not a learned model. Caller-supplied adapters require explicit authorization even if labeled offline; authorization permits passing query and chunk text to that adapter. No external implementation is bundled. Hybrid uses reciprocal rank fusion with constant 60 and top 100 candidates per strategy. Context returns structured untrusted documents and citation metadata, never a trusted prompt. Budget counts UTF-16 text code units, not transport overhead or tokens. Citations identify source spans but do not prove correctness or access rights.

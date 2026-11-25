@@ -1,5 +1,5 @@
 # Resume
 
-Last verified main: 5bbc7b234cd90e0a4a3bb565ba147cd17c4e4630
+Last verified main: ec769d9c7d6e6e2c596dc4effff52b6cfc89a37b
 
-Phase 3: validate and merge retrieval hardening PR, then implement offline embedding interface, cosine and hybrid ranking. Run npm ci && npm test && npm run demo. Verify website with cd website-react && npm ci && npm run build. Local index paths and parent directories must be trusted; integrity hashes are not authentication. No external provider calls.
+Next: verify semantic/context PR, merge if eligible, then implement reproducible benchmark experiments and CLI. Run npm ci && npm test && npm run demo; cd website-react && npm ci && npm run build. External adapters are caller-supplied and require explicit authorization; no paid provider calls. Adapter timeouts and cancellation remain to be hardened.

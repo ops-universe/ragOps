@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
-- PR #1: merged foundation and deterministic BM25 retrieval.
-- PR #2: merged local bounded Markdown/text ingestion and retrieval CLI; exact-head CI passed.
-- Candidate: document integrity validation, corpus limits and versioned local index persistence.
+- PR #1: merged foundation and BM25.
+- PR #2: merged bounded local ingestion and CLI.
+- PR #3: merged retrieval integrity validation and versioned index persistence; exact-head CI passed.
+- Candidate: offline hash embeddings, cosine similarity, reciprocal rank fusion, structured context and citations.
